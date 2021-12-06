@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class StudentTest {
 
-    Student student1 = new Student(25, 2, "Tizian");
-    Student student2 = new Student(24, 18, "Nico");
+    Student student1 = new Student(25, 2, 1,"Tizian");
+    Student student2 = new Student(24, 18, 2,"Nico");
 
     @Test
     void checkAge() {
@@ -51,7 +51,7 @@ class StudentTest {
 
     @Test
     void checkEqualsFunction() {
-        assertEquals(student1, new Student(25, 2, "Tizian"));
+        assertEquals(student1, new Student(25, 2, 1,"Tizian"));
     }
 
     @Test

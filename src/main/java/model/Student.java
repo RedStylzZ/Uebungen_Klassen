@@ -4,13 +4,29 @@ import java.util.Objects;
 
 public class Student {
 
+    private final int id;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return id == student.id && age == student.age && semester == student.semester && Objects.equals(name, student.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, age, semester);
+    }
+
+    private String name;
     private int age;
     private int semester;
-    private String name;
 
-    public Student(int age, int semester, String name) {
+    public Student(int age, int semester, int id, String name) {
         this.age = age;
         this.semester = semester;
+        this.id = id;
         this.name = name;
     }
 
@@ -40,21 +56,12 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student " + this.name +
-                "\nis " + this.age + " years old" +
-                "\nand is in semester " + this.semester;
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                ", age=" + age +
+                ", semester=" + semester +
+                '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Student student = (Student) o;
-        return age == student.age && semester == student.semester && name.equals(student.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(age, semester, name);
-    }
 }
