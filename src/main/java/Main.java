@@ -19,7 +19,7 @@ public class Main {
         System.out.println(studentDB);
         studentDB.add(student6);
         System.out.println(studentDB);
-        studentDB.remove(student6);
+        studentDB.remove(student2);
         System.out.println(studentDB);
         System.out.println(studentDB.randomStudent());
     }
