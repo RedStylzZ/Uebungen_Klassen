@@ -24,7 +24,7 @@ public class StudentDB {
                 newStudents = Arrays.copyOfRange(students, 0, x);
                 newStudents = Arrays.copyOf(newStudents, students.length-1);
                 if(newStudents.length >= x+1) {
-                    System.arraycopy(students, x+1, newStudents, x, newStudents.length);
+                    System.arraycopy(students, x+1, newStudents, x, newStudents.length-1);
                 }
                 students = Arrays.copyOf(newStudents, newStudents.length);
                 return;

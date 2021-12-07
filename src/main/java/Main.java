@@ -16,12 +16,12 @@ public class Main {
         Student[] students = studentDB.list();
         System.out.println(students[0]);
         System.out.println();
-        System.out.println(studentDB);
+        System.out.println("toString " + studentDB);
         studentDB.add(student6);
-        System.out.println(studentDB);
-        studentDB.remove(student2);
-        System.out.println(studentDB);
-        System.out.println(studentDB.randomStudent());
+        System.out.println("Added " + studentDB);
+        studentDB.remove(student1);
+        System.out.println("Removed " + studentDB);
+        System.out.println("Random " + studentDB.randomStudent());
     }
 
 }

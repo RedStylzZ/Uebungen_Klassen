@@ -5,6 +5,9 @@ import java.util.Objects;
 public class Student {
 
     private final int id;
+    private String name;
+    private int age;
+    private int semester;
 
     @Override
     public boolean equals(Object o) {
@@ -18,10 +21,6 @@ public class Student {
     public int hashCode() {
         return Objects.hash(id, name, age, semester);
     }
-
-    private String name;
-    private int age;
-    private int semester;
 
     public Student(int age, int semester, int id, String name) {
         this.age = age;
