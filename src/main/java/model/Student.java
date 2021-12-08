@@ -22,6 +22,16 @@ public class Student {
         return Objects.hash(id, name, age, semester);
     }
 
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                ", age=" + age +
+                ", semester=" + semester +
+                '}';
+    }
+
     public Student(int age, int semester, int id, String name) {
         this.age = age;
         this.semester = semester;
@@ -38,6 +48,9 @@ public class Student {
     public String getName() {
         return name;
     }
+    public int getId() {
+        return this.id;
+    }
 
     public void setAge(int age) {
         this.age = age;
@@ -53,14 +66,5 @@ public class Student {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "name='" + name + '\'' +
-                ", id=" + id +
-                ", age=" + age +
-                ", semester=" + semester +
-                '}';
-    }
 
 }

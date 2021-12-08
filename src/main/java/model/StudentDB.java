@@ -1,20 +1,33 @@
 package model;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class StudentDB {
 
-    private Student[] students;
+//    private Student[] students;
+//    private List<Student> students;
+    private final Map<Integer, Student> students;
 
-    public StudentDB(Student[] students) {
+    /*public StudentDB(List<Student> students) {
+        this.students = students;
+    }*/
+    /*public void add(Student student) {
+        students = Arrays.copyOf(students, students.length+1);
+        students[students.length-1] = student;
+    }*/
+
+    public StudentDB(Map<Integer, Student> students) {
         this.students = students;
     }
 
     public void add(Student student) {
-        students = Arrays.copyOf(students, students.length+1);
-        students[students.length-1] = student;
+        this.students.put(student.getId(), student);
     }
 
+    public void remove(Student student) {
+        this.students.remove(student.getId());
+    }
+/*
     public void remove(Student student) {
         Student[] newStudents;
 
@@ -30,22 +43,23 @@ public class StudentDB {
                 return;
             }
         }
+    }
+*/
 
+    public Map<Integer, Student> list() {
+        return students;
     }
 
-    public Student[] list() {
-        return students;
+    public Student randomStudent() {
+        return students.get((int)(Math.random() * students.size()));
     }
 
     @Override
     public String toString() {
         return "StudentDB{" +
-                "students=" + Arrays.toString(students) +
+                "students=" + students +
                 '}';
     }
 
-    public Student randomStudent() {
-        return students[(int)(Math.random() * students.length)];
-    }
 
 }

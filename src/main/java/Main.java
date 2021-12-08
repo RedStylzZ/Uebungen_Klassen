@@ -1,6 +1,11 @@
 import model.Student;
 import model.StudentDB;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -12,14 +17,20 @@ public class Main {
         Student student6 = new Student(1, 1, 6,"Added");
 
 
-        StudentDB studentDB = new StudentDB(new Student[]{student1, student2, student3, student4, student5});
-        Student[] students = studentDB.list();
-        System.out.println(students[0]);
+//        StudentDB studentDB = new StudentDB(new ArrayList<Student>(List.of(student1, student2, student3, student4, student5)));
+        StudentDB studentDB = new StudentDB(new HashMap<Integer, Student>(Map.of(
+                student1.getId(), student1,
+                student2.getId(), student2,
+                student3.getId(), student3,
+                student4.getId(), student4,
+                student5.getId(), student5)));
+        Map<Integer, Student> students = studentDB.list();
+        System.out.println(students.get(1));
         System.out.println();
         System.out.println("toString " + studentDB);
         studentDB.add(student6);
         System.out.println("Added " + studentDB);
-        studentDB.remove(student1);
+        studentDB.remove(student3);
         System.out.println("Removed " + studentDB);
         System.out.println("Random " + studentDB.randomStudent());
     }
