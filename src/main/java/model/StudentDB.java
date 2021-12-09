@@ -66,5 +66,12 @@ public class StudentDB {
                 '}';
     }
 
+    public Optional<Student> findById(UUID uuid) {
+        if (students.containsKey(uuid)) {
+            return Optional.of(students.get(uuid));
+        } else {
+            return Optional.empty();
+        }
+    }
 
 }

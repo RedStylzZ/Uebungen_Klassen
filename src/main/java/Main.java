@@ -33,6 +33,8 @@ public class Main {
         studentDB.remove(student3);
         System.out.println("Removed " + studentDB);
         System.out.println("Random " + studentDB.randomStudent());
-    }
 
+        System.out.println("Find by ID " + studentDB.findById(student2.getUUID()).orElse(student1));
+        System.out.println("Find by ID " + studentDB.findById(UUID.fromString("cbf8d0cf-d7fe-4d9d-997c-879669561c04")).orElse(student1));
+    }
 }
