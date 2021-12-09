@@ -1,42 +1,42 @@
 package model;
 
 import java.util.Objects;
+import java.util.UUID;
 
 public class Student {
 
-    private final int id;
+    private final UUID uuid = UUID.randomUUID();
     private String name;
     private int age;
     private int semester;
+
+    public Student(int age, int semester, String name) {
+        this.age = age;
+        this.semester = semester;
+        this.name = name;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Student student = (Student) o;
-        return id == student.id && age == student.age && semester == student.semester && Objects.equals(name, student.name);
+        return uuid == student.uuid && age == student.age && semester == student.semester && Objects.equals(name, student.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, age, semester);
+        return Objects.hash(uuid, name, age, semester);
     }
 
     @Override
     public String toString() {
         return "Student{" +
                 "name='" + name + '\'' +
-                ", id=" + id +
+                ", id=" + uuid +
                 ", age=" + age +
                 ", semester=" + semester +
                 '}';
-    }
-
-    public Student(int age, int semester, int id, String name) {
-        this.age = age;
-        this.semester = semester;
-        this.id = id;
-        this.name = name;
     }
 
     public int getAge() {
@@ -48,8 +48,8 @@ public class Student {
     public String getName() {
         return name;
     }
-    public int getId() {
-        return this.id;
+    public UUID getUUID() {
+        return this.uuid;
     }
 
     public void setAge(int age) {

@@ -1,31 +1,36 @@
 package model;
 
+import java.security.InvalidKeyException;
 import java.util.*;
 
 public class StudentDB {
 
 //    private Student[] students;
 //    private List<Student> students;
-    private final Map<Integer, Student> students;
+    private final Map<UUID, Student> students;
 
     /*public StudentDB(List<Student> students) {
         this.students = students;
-    }*/
-    /*public void add(Student student) {
+    }
+    public void add(Student student) {
         students = Arrays.copyOf(students, students.length+1);
         students[students.length-1] = student;
     }*/
 
-    public StudentDB(Map<Integer, Student> students) {
+    public StudentDB(Map<UUID, Student> students) {
         this.students = students;
     }
 
-    public void add(Student student) {
-        this.students.put(student.getId(), student);
+    public void add(Student student) throws InvalidKeyException {
+        if (this.students.containsKey(student.getUUID())) {
+            throw new InvalidKeyException("ID " + student.getUUID() +  " existiert schon!");
+        } else {
+            this.students.put(student.getUUID(), student);
+        }
     }
 
     public void remove(Student student) {
-        this.students.remove(student.getId());
+        this.students.remove(student.getUUID());
     }
 /*
     public void remove(Student student) {
@@ -46,12 +51,12 @@ public class StudentDB {
     }
 */
 
-    public Map<Integer, Student> list() {
+    public Map<UUID, Student> list() {
         return students;
     }
 
     public Student randomStudent() {
-        return students.get((int)(Math.random() * students.size()));
+        return (Student) students.values().toArray()[(int)(Math.random() * students.size())];
     }
 
     @Override
